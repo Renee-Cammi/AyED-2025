@@ -6,5 +6,11 @@
 // Declarar una clase Sensor que tenga un nombre (string), valor (flotante) y unidad (string)
 // Metodos para mostrar el sensor, cambiar el valor, cambiar el nombre.
 
+class Sensor{
+private:
+	string nombre; 
+	float valor; 
+	string unidad; 
+	}
 
 #endif
