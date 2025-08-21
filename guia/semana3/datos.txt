@@ -1,0 +1,12 @@
+temp_living 22.50 C
+hum_living 45.00 %
+temp_cocina 24.10 C
+hum_cocina 51.20 %
+luz_living 320.00 lx
+luz_cocina 410.50 lx
+temp_habitacion1 21.80 C
+hum_habitacion1 48.30 %
+temp_bano 23.00 C
+hum_bano 55.00 %
+cochera_temp 20.40 C
+cochera_luz 150.00 lx
