@@ -12,5 +12,6 @@ struct Sensor {
 // Prototipos
 void imprimir(const Sensor* lista, int n);
 int cargarDesdeArchivo(const std::string& ruta, Sensor* lista, int n);
-
+float promedioValores(const Sensor* lista, int n, std::string unidad);
+int contarSensores(const Sensor* lista, int n, std::string unidad);
 #endif
