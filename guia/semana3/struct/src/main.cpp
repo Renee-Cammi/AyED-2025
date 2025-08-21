@@ -2,16 +2,25 @@
 #include "sensor.h"
 
 using namespace std;
-nt main() {
+
+int main() {
+    // Sensor sCocina;
+    // sCocina.nombre = "TempCocina";
+    // sCocina.valor = 28.3;
+    // sCocina.unidad = "C";
+
+    // Sensor* sHabitacion = new Sensor;
+    // sHabitacion->nombre = "TempHabitacion";
+
+
+
     
     int N;
     cout << "Cantidad de sensores: ";
     cin >> N;
 
     //TODO: Instanciar un array de Sensores de forma dinamica y de tamaño N
-    Sensor* sensores= new Sensor[N];  
-    
-    
+    Sensor* sensores = new Sensor[N];
     string archivoEntrada;
     cout << "Archivo de entrada: ";
     cin >> archivoEntrada;
@@ -21,8 +30,7 @@ nt main() {
 
     imprimir(sensores, leidos);
 
-    // TODO: Que habria que hacer aca??
-    free.()
+    // delete sHabitacion;
     return 0;
 }
 

@@ -4,28 +4,20 @@
 #include <iomanip>
 
 void imprimir(const Sensor* lista, int n) {
-	/*for(int i=0; i<n; i++){
-		cout << lista[i].nombre<< " " << lista[i].valor<< " "<< lista[i].unidad << endl;
-		} */
-		cout << (lista+i)->nombre << (lista+i)->valor << (lista+i)->unidad << endl;
+    for(int i = 0; i<n; i++){
+        // std::cout << lista[i].nombre << " = " << lista[i].valor << " " << lista[i].unidad << std::endl;
+        std::cout << "Sensor["<<i<<"]: " << (lista+i)->nombre <<  " = " << (lista+i)->valor << " " << (lista+i)->unidad << std::endl;
+    }
 }
 
 int cargarDesdeArchivo(const std::string& ruta, Sensor* lista, int n) {
-	ifstream archivo(ruta);
-	if(!archivo){
-		cout <<"no se pudo abrir el archivo";
-		return 0;
-		}
-		int leidos=0;
-	/*for(int i=0; i<n;i++){
-		archivo >> lista[i].nombre; 
-		archivo >> lista[i].valor;
-		archivo >> lista[i].unidad;
-		leidos++;
-		}*/	
-		
-	while (leidos<n && (archivo >>lista[leidos].nombre >> lista[leidos].valor >>lista[leidos].unidad)){
-		leidos ++;
-		}
-		return leidos; 
+    std::ifstream in(ruta);
+    if(!in) return 0;
+
+    int count = 0;
+    while(count < n && (in >> lista[count].nombre >> lista[count].valor)>> lista[count].unidad){
+        count++;
+    }
+
+    return count;
 }
