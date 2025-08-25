@@ -13,8 +13,6 @@ int main() {
     // sHabitacion->nombre = "TempHabitacion";
 
 
-
-    
     int N;
     cout << "Cantidad de sensores: ";
     cin >> N;
@@ -30,6 +28,11 @@ int main() {
 
     imprimir(sensores, leidos);
 
+    cout << promedioValores(sensores, leidos,"C") << endl;
+
+    cout << contarSensores(sensores, leidos,"%") << endl; 
+
+    delete[] sensores; 
     // delete sHabitacion;
     return 0;
 }
