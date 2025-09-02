@@ -16,8 +16,8 @@ class Sensor{
 	float getValor();
 	string getUnidad();
 
-	void cambioNombre(string);
-	void cambioValor(float);
+	void setNombre(string);
+	void setValor(float);
 
 private:
 	string nombre; 

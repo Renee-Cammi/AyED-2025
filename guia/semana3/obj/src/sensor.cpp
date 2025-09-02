@@ -1,4 +1,4 @@
-#include "sensor.h"
+#include "Sensor.h"
 #include <iostream>
 #include <fstream>
 #include <iomanip>
@@ -21,9 +21,9 @@ string Sensor::getUnidad(){
     return unidad; 
 }
 
-void Sensor::cambioNombre(string nuevoNombre){
+void Sensor::setNombre(string nuevoNombre){
     nombre= nuevoNombre;
 }
-void Sensor::cambioValor(float nuevoValor){
+void Sensor::setValor(float nuevoValor){
     valor= nuevoValor; 
 }
