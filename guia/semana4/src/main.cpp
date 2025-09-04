@@ -24,6 +24,15 @@ int main() {
 
     Sensor* obtenido = sala->getSensor(1);
     if(obtenido) cout << "Sensor en pos 1: " << obtenido->getNombre()<<" valor: "<< obtenido->getValor() << obtenido->getUnidad()<< endl;
-
+    
+    cout << "Cuenta de mayores que 12 C: " <<sala->contarMayoresQue(12,"C") << endl;
+    
+    sala->mostrarSensores();
+    
+    cout << "Posicion Maximo C: " << sala->maximo("C") << endl;
+    
+    sala->normalizarValores01("C");
+    sala->mostrarSensores();
+    
     return 0;
 }

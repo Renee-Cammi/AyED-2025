@@ -84,7 +84,7 @@ void Recinto::_mostrarSensores(Sensor** v, int n){
 if(n==this->nSensores) return; 
 else{ 
     if(v[n]!=nullptr){
-        std::cout << v[n]->getNombre() << "= " << v[n]->getUnidad() << " " << v[n]->getValor() << std::endl;
+        std::cout << v[n]->getNombre() << "= " << v[n]->getValor() << v[n]->getUnidad() << std::endl;
         _mostrarSensores(v,n+1);
     }
     else _mostrarSensores(v,n+1);
@@ -92,11 +92,10 @@ else{
 }
 
 void Recinto::_normalizarValores01(Sensor** v, int n, std::string unidad){
+    std::cout << n << std::endl;
     if(n==this->nSensores) return;
     else{
-        if(v[n]!=nullptr)
-        v[n]->setValor(v[n]->getValor()/ maximo(unidad));
-        else 
+        if(v[n]!=nullptr && v[n]->getUnidad()== unidad) v[n]->setValor(v[n]->getValor()/ v[maximo(unidad)]->getValor() );
         _normalizarValores01(v,n+1,unidad);
     }
 };
