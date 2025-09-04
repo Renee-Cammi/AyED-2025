@@ -51,11 +51,15 @@ int Recinto::_maximo(Sensor** v, int n, std::string unidad, int mejorPos){
 }
 
 int Recinto::_buscar(Sensor** v, int n, const std::string& nombreBuscado){
-    //TODO
+    if(n==this->nSensores) return -1;
+    else{
+        if (v[n]!=nullptr && v[n]->getNombre()==nombreBuscado) return n;
+        else return _buscar(v,n+1,nombreBuscado);
+    }
 }
 
 Sensor* Recinto::_getSensor(Sensor** v, int n, int posBuscada){
-    if(n==nSensores){
+    if(n==this->nSensores){
         return nullptr;
     }
     else{
@@ -66,3 +70,33 @@ Sensor* Recinto::_getSensor(Sensor** v, int n, int posBuscada){
         }
     }
 }
+
+int Recinto::_contarMayoresQue(Sensor** v, int n, float referencia, std::string unidad)
+{
+if (n==this->nSensores) return 0;
+else{
+    if (v[n]!=nullptr && v[n]->getUnidad()==unidad && v[n]->getValor()>= referencia) return 1+_contarMayoresQue(v,n+1,referencia,unidad);
+    else return _contarMayoresQue(v,n+1, referencia, unidad);
+}
+}
+
+void Recinto::_mostrarSensores(Sensor** v, int n){
+if(n==this->nSensores) return; 
+else{ 
+    if(v[n]!=nullptr){
+        std::cout << v[n]->getNombre() << "= " << v[n]->getUnidad() << " " << v[n]->getValor() << std::endl;
+        _mostrarSensores(v,n+1);
+    }
+    else _mostrarSensores(v,n+1);
+}
+}
+
+void Recinto::_normalizarValores01(Sensor** v, int n, std::string unidad){
+    if(n==this->nSensores) return;
+    else{
+        if(v[n]!=nullptr)
+        v[n]->setValor(v[n]->getValor()/ maximo(unidad));
+        else 
+        _normalizarValores01(v,n+1,unidad);
+    }
+};

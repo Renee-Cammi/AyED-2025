@@ -51,13 +51,19 @@ class Recinto {
         };
         int buscar(std::string nombreBuscado){
             //TODO
-            return -1;
+            return _buscar(this->sensores,0,nombreBuscado);
         };
 
         // TODO: Implementar llamadas a funciones recursivas
-        int contarMayoresQue(float referencia, std::string unidad);
-        void mostrarSensores();
-        void _normalizarValores01(std::string unidad);
+        int contarMayoresQue(float referencia, std::string unidad){
+            return _contarMayoresQue(this->sensores,0, referencia, unidad);
+        }
+        void mostrarSensores(){
+            _mostrarSensores(this->sensores,0);
+        }
+        void normalizarValores01(std::string unidad){
+            _normalizarValores01(this->sensores,0,unidad);
+        };
 
 
 };
