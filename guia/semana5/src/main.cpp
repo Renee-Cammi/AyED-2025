@@ -12,8 +12,8 @@ int main() {
     h.agregarSensor(Sensor("hum_living", "%"));
 
     // Setear valores
-    h.setValor("temp_living", 22.8f);
-    h.setValor("hum_living", 45.0f);
+    h.setValor("temp_living", 22.8);
+    h.setValor("hum_living", 45.0);
 
     // Consultas
     cout << "Cantidad de sensores: " << h.cantidadSensores() << "\n";
@@ -28,7 +28,7 @@ int main() {
     // Obtener puntero y operar directo (opcional)
     Sensor* p = h.obtenerSensor("temp_living");
     if (p != nullptr) {
-        p->setValor(23.1f);
+        p->setValor(23.1);
     }
 
     // Eliminar por nombre

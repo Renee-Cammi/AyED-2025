@@ -21,52 +21,91 @@ void Habitacion::agregarSensor(const std::string& n, const std::string& u) {
 void Habitacion::mostrarRec(std::vector<Sensor>::const_iterator it,
                             std::vector<Sensor>::const_iterator fin,
                             int idxBase) const {
-    //TODO: imprimir la cabeza y llamar a la recursión con el resto
+    // Mostrar todos: cabeza = *it, resto = [next(it), end)
+    // imprimir la cabeza y llamar a la recursión con el resto
+    if(it==fin) return;
+    else{
+        std::cout << "Sensor " << idxBase+1 << ": " <<  it->getNombre() << " = " << it->getValor() << " " << it->getUnidad() << std::endl;
+        mostrarRec(std::next(it),fin, idxBase+1);
+    }
 }
 
 int Habitacion::indiceDeRec(std::vector<Sensor>::const_iterator it,
                             std::vector<Sensor>::const_iterator fin,
                             int idxBase,
                             const std::string& nombreSensor) const {
-    //TODO: devolver índice si la cabeza coincide, o recursión con el resto
-    return -1;
+    // devolver índice si la cabeza coincide, o recursión con el resto
+    if(it==fin) return -1;
+    else{
+        if(it->getNombre()==nombreSensor) return idxBase;
+        return indiceDeRec(std::next(it),fin,idxBase+1,nombreSensor);
+    }
 }
 
 bool Habitacion::setValorRec(std::vector<Sensor>::iterator it,
                              std::vector<Sensor>::iterator fin,
                              const std::string& nombreSensor,
                              float nuevoValor) {
-    //TODO: si la cabeza coincide cambiar valor, si no, recursión con el resto
-    return false;
+    // si la cabeza coincide cambiar valor, si no, recursión con el resto
+    if(it==fin) return false;
+    else{
+        if(it->getNombre()==nombreSensor){
+            it->setValor(nuevoValor);
+            return true;
+        }
+        else return setValorRec(std::next(it),fin,nombreSensor,nuevoValor);
+    }
 }
 
 bool Habitacion::setNombreRec(std::vector<Sensor>::iterator it,
                               std::vector<Sensor>::iterator fin,
                               const std::string& nombreActual,
                               const std::string& nombreNuevo) {
-    //TODO: si la cabeza coincide cambiar nombre, si no, recursión con el resto
-    return false;
+    // si la cabeza coincide cambiar nombre, si no, recursión con el resto
+    if(it==fin) return false;
+    else{
+        if(it->getNombre()==nombreActual){
+            it->setNombre(nombreNuevo);
+            return true;
+        }
+        else return setNombreRec(std::next(it),fin,nombreActual,nombreNuevo);
+    }
 }
 
 const Sensor* Habitacion::obtenerConstRec(std::vector<Sensor>::const_iterator it,
                                           std::vector<Sensor>::const_iterator fin,
                                           const std::string& nombreSensor) const {
-    //TODO: devolver puntero al sensor si coincide, si no, recursión con el resto
-    return nullptr;
+    // devolver puntero al sensor si coincide, si no, recursión con el resto
+    if(it==fin) return nullptr;
+    else{
+        if(it->getNombre()==nombreSensor) return &(*it);
+        return obtenerConstRec(std::next(it),fin,nombreSensor);
+    }
 }
 
 Sensor* Habitacion::obtenerRec(std::vector<Sensor>::iterator it,
                                std::vector<Sensor>::iterator fin,
                                const std::string& nombreSensor) {
-    //TODO: devolver puntero al sensor si coincide, si no, recursión con el resto
-    return nullptr;
+    // devolver puntero al sensor si coincide, si no, recursión con el resto
+    if(it==fin) return nullptr;
+    else{
+        if(it->getNombre()==nombreSensor) return &(*it);
+        return obtenerRec(std::next(it),fin,nombreSensor);
+    }
 }
 
 bool Habitacion::eliminarPorNombreRec(std::vector<Sensor>::iterator it,
                                       std::vector<Sensor>::iterator fin,
                                       const std::string& nombreSensor) {
     //TODO: si la cabeza coincide, borrar con erase; si no, recursión con el resto
-    return false;
+    if(it==fin) return false;
+    else{
+        if(it->getNombre()==nombreSensor){
+            this->sensores.erase(it);
+            return true;
+        }
+        return eliminarPorNombreRec(std::next(it),fin,nombreSensor);
+    }
 }
 
 // ===== API pública (envoltorios) =====
