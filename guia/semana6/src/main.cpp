@@ -3,18 +3,34 @@
 #include "Reglas.h"
 
 int main() {
+    std::cout << "inicio" << std::endl; 
     // 1) Construcción del modelo (sin STL)
     Habitacion living("Living");
+    
+    Lista<int> nueva;
+    std::cout << nueva.length()<< std::endl; 
+
+     std::cout <<"INICIO MUESTRA1"<< std::endl;
+
 
     // Sensores base
     living.agregarSensor("temp", "C");
     living.agregarSensor("hum",  "%");
 
+    std::cout <<"INICIO MUESTRA2"<< std::endl;
+
+
     // Configurar ventanas deslizantes (K = 5)
     Sensor* sTemp = living.obtenerSensor("temp");
     Sensor* sHum  = living.obtenerSensor("hum");
+
+     std::cout <<"INICIO MUESTRA22"<< std::endl;
+
     if (sTemp) sTemp->configurarVentana(5);
     if (sHum)  sHum ->configurarVentana(5);
+
+    std::cout <<"INICIO MUESTRA" << std::endl;
+
 
     // 2) Alimentar lecturas (setValor también ingresa en ventana)
     living.setValor("temp", 26.0f);
@@ -26,7 +42,11 @@ int main() {
     living.setValor("temp", 28.5f);
     living.setValor("hum",  35.0f);
 
+    std::cout <<"INICIO MUESTRA" << std::endl;
+
     living.mostrar();
+
+    std::cout <<"FIN MUESTRA" << std::endl;
 
     // 3) Regla RPN: si temp > 25 && hum < 40 entonces ACT:ventilador=ON
     // tokens (en orden postfijo):
