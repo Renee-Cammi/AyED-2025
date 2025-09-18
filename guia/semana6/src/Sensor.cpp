@@ -37,6 +37,7 @@ float Sensor::promedioMovil() const {
 }
 
 bool Sensor::estable(float umbral) const {
-    //TODO
-    return 1; 
+    if(ventana !=nullptr) 
+    return (ventana->front() - this->promedioMovil()) < umbral;
+    return 0; 
 }
